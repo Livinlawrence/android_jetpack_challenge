@@ -1,7 +1,11 @@
 package com.example.androiddevchallenge.ui.view
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -25,11 +29,11 @@ import com.example.androiddevchallenge.model.Puppy
 
 
 @Composable
-fun puppyDetails(pos:Int) {
+fun puppyDetails(pos: Int) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text ="Puppy adoption app") }
+                title = { Text(text = "Puppy adoption app") }
             )
         },
         content = {
@@ -43,7 +47,9 @@ fun buildPuppyDetails(puppy: Puppy) {
     MaterialTheme {
         val typography = MaterialTheme.typography
         Column(
-            modifier = Modifier.padding(16.dp).verticalScroll(rememberScrollState())
+            modifier = Modifier
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState())
         ) {
             Image(
                 painter = painterResource(puppy.photo),
@@ -55,13 +61,20 @@ fun buildPuppyDetails(puppy: Puppy) {
             )
             Spacer(Modifier.height(20.dp))
 
-            Text(puppy.breed,
-                style = typography.h4)
+            Text(
+                puppy.breed,
+                style = typography.h4
+            )
             Spacer(Modifier.height(5.dp))
-            Text(puppy.description, textAlign = TextAlign.Left,
+            Text(
+                puppy.description, textAlign = TextAlign.Left,
                 style = TextStyle(
-                    fontSize = 20.sp, color = Color.DarkGray,fontFamily = FontFamily.Default,lineHeight = 30.sp
-                ),)
+                    fontSize = 20.sp,
+                    color = Color.DarkGray,
+                    fontFamily = FontFamily.Default,
+                    lineHeight = 30.sp
+                ),
+            )
         }
     }
 }
